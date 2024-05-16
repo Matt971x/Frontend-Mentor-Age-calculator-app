@@ -5,28 +5,56 @@ const inputResult = document.querySelector(".result");
 
 let currentYear = new Date().getFullYear();
 let currentMonth = new Date().getMonth();
-
-const daysInMonth = (year, month) => new Date(year, month, 0).getDate();
-
-let user_date = new Date(1961, 4, 18);
-
 let current_date = new Date();
 
-let totalOfDayLeft = (current_date - user_date) / 86400000;
+const daysInMonth = (year, month) => new Date(year, month, 0).getDate();
+let day;
+let month;
+let year;
 
-let totalMonthLeft = 12 - (user_date.getMonth() - current_date.getMonth());
-let numberOfYear = Math.floor(totalOfDayLeft / 365);
-let numberOfDay = current_date.getUTCDate() - user_date.getUTCDate();
+inputDay.addEventListener("input", (e) => {
+  if (isNaN(e.target.value)) {
+    console.log("erreur");
+  } else {
+    day = e.target.value;
+    console.log(e.target.value);
+  }
+});
 
-if (numberOfDay <= 0) {
-  document.querySelector(".days").textContent =
-    daysInMonth(currentYear, currentMonth) + numberOfDay;
-  numberOfYear--;
-} else {
-  document.querySelector(".days").textContent = numberOfDay;
-}
+inputMonth.addEventListener("input", (e) => {
+  if (isNaN(e.target.value)) {
+    console.log("erreur");
+  } else {
+    month = e.target.value;
+    console.log(e.target.value);
+  }
+});
 
-document.querySelector(".years").innerHTML = numberOfYear;
+inputYear.addEventListener("input", (e) => {
+  if (isNaN(e.target.value)) {
+    document.querySelector(".error").textContent = "erreur";
+  } else {
+    year = e.target.value;
+    console.log(e.target.value);
+  }
+});
 
-document.querySelector(".months").textContent =
-  totalMonthLeft >= 12 ? totalMonthLeft - 12 : totalMonthLeft;
+const ageCalculator = () => {
+  let user_date = new Date(year, month, day);
+  let totalOfDayLeft = (current_date - user_date) / 86400000;
+  let totalMonthLeft = 12 - (user_date.getMonth() - current_date.getMonth());
+  let numberOfYear = Math.floor(totalOfDayLeft / 365);
+  let numberOfDay = current_date.getUTCDate() - user_date.getUTCDate();
+  if (numberOfDay <= 0) {
+    document.querySelector(".days").textContent =
+      daysInMonth(currentYear, currentMonth) + numberOfDay;
+    numberOfYear--;
+  } else {
+    document.querySelector(".days").textContent = numberOfDay;
+  }
+  document.querySelector(".years").innerHTML = numberOfYear;
+  document.querySelector(".months").textContent =
+    totalMonthLeft >= 12 ? totalMonthLeft - 12 : totalMonthLeft;
+};
+
+inputResult.addEventListener("click", ageCalculator);
