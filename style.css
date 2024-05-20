@@ -67,7 +67,7 @@ body {
 }
 
 .wrapper {
-    max-width: 840px;
+    width: 840px;
     height: 650px;
     background: var(--White);
     padding: 40px 56px;
