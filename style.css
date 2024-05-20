@@ -67,7 +67,7 @@ body {
 }
 
 .wrapper {
-    width: 840px;
+    max-width: 840px;
     height: 650px;
     background: var(--White);
     padding: 40px 56px;
@@ -132,6 +132,7 @@ hr{
 
 .imgWrapper:hover{
     cursor: pointer;
+    background-color: var(--Off_black);
 }
 
 .results {
@@ -145,4 +146,69 @@ hr{
     font-weight: bold;
     font-style: italic;
     line-height: 1;
+}
+
+.error {
+    text-transform: initial;
+    color: red;
+}
+
+
+@media screen and (max-width:475px){
+    .wrapper {
+        max-width: 90%;
+        height: 500px;
+        padding: 25px 25px;
+        border-radius: 25px 25px 80px 25px ;
+    
+    }
+    .inputs-wrapper{
+        display: flex;
+        gap: 10px;
+        
+    }
+    
+    .inputs label {
+        color: var(--Smokey_grey);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 4px;
+        margin: 25px 0 5px;
+    }
+    
+    
+    .inputs input {
+        width: 90px;
+        padding: 9px 16px;
+        font-size: 1.2rem;
+    }
+    
+    .imgWrapper {
+        width: 60px;
+        height: 60px;
+        right: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+
+    }
+    .imgWrapper img {
+        width: 25px;
+        height: 25px;
+
+    }
+    
+    
+    .wrapper p{
+        padding: 5px 10px;
+        font-size: 3rem;
+        font-weight: bold;
+        font-style: italic;
+        line-height: 1;
+    }
+
+    .error {
+        font-size: 0.6rem;
+    }
+    
+    
 }
